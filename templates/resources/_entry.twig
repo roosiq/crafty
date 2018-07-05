@@ -1,38 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Article - UIkit 3 KickOff</title>
-		<link rel="icon" href="img/favicon.ico">
-		<!-- CSS FILES -->
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/css/uikit.min.css">
-	</head>
-	<body>
-		<div class="uk-offcanvas-content">
-			<!--HEADER-->
-			<header style="background-color: #fff; border-bottom: 1px solid #f2f2f2" data-uk-sticky="show-on-up: true; animation: uk-animation-slide-top">
-				<div class="uk-container">
-					<nav id="navbar" data-uk-navbar="mode: click;">
-						<div class="uk-navbar-left">
-			                 <a class="uk-navbar-item uk-logo logo" href="/">RYAN COOK</a>
-						</div>
-
-						<div class="uk-navbar-right">
-							<div class="uk-navbar-item">
-								<a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
-							</div>
-						</div>
-					</nav>
-				</div>
-			</header>
-			<!--/HEADER-->
-
-
-			<div class="uk-container uk-container-small">
-				<hr class="uk-margin-remove">
-			</div>
+{% extends '_layout' %}
+{% block main %}
 			<!--ARTICLE-->
 
 			<section class="uk-section uk-article">
@@ -146,7 +113,9 @@
 						<div class="uk-position-relative">
 							<div class="uk-slider-container">
 								<ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-grid-medium">
+									{% for entry in craft.entries.section('resources').limit(10).all() %}
 									<li>
+										
 										<!-- card -->
 										<div>
 											<div class="uk-card uk-card-default uk-card-small" style="box-shadow: none;">
@@ -173,6 +142,7 @@
 										</div>
 										<!-- /card -->
 									</li>
+									{% endfor %}
 									<li>
 										<!-- card -->
 										<div>
@@ -353,46 +323,4 @@
 					</div>
 				</div>
 			</section>
-
-			<!--FOOTER-->
-			<footer class="uk-section uk-section-small" style="margin-bottom: 60px">
-				<div class="uk-container">
-					<p class="uk-text-small uk-text-center">Copyright 2018 - Ryan Cook | Built with <a href="http://getuikit.com" title="Visit UIkit 3 site" target="_blank" data-uk-tooltip><span data-uk-icon="uikit"></span></a> & <a href="#" title="Visit CraftCMS site"><img src="https://craftcmsassets.craftcdn.com/images/brand-assets/_270xAUTO_crop_center-center/craft-cms-logo.svg" uk-svg height="20" width="68"></a></p>
-				</div>
-			</footer>
-			<!--/FOOTER-->
-			<!-- OFFCANVAS -->
-			<div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
-				<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-					<button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
-					<ul class="uk-nav uk-nav-default">
-						<li class="uk-active"><a href="#">Active</a></li>
-						<li class="uk-parent">
-							<a href="#">Parent</a>
-							<ul class="uk-nav-sub">
-								<li><a href="#">Sub item</a></li>
-								<li><a href="#">Sub item</a></li>
-							</ul>
-						</li>
-						<li class="uk-nav-header">Header</li>
-						<li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
-						<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-						<li class="uk-nav-divider"></li>
-						<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
-					</ul>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-			</div>
-			<!-- /OFFCANVAS -->
-		</div>
-		<!-- JS FILES -->
-		<!-- JS FILES -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit-icons.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script async src="particles.json"></script>
-	</body>
-</html>
+{% endblock %}
